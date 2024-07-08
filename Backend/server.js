@@ -24,7 +24,7 @@ connectDB();
 // app.use(cors(corsOptions));
 
 app.use(cors({
-  origin: ["https://cake-crm-frontend.vercel.app/"],
+  origin: ["https://cake-crm-frontend.vercel.app"],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
