@@ -17,13 +17,13 @@ const app = express();
 connectDB();
 
 
-app.use(cors());
+// app.use(cors());
 
-// app.use(cors({
-//   origin: ["https://cake-crm-frontend.vercel.app"],
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   credentials: true,
-// }));
+app.use(cors({
+  origin: ["https://cake-crm-frontend.vercel.app"],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
 
 
 
@@ -39,18 +39,18 @@ app.get('/api', (req, res) => {
 });
 
 // Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, '/my-crm-app/dist')));
+// if (process.env.NODE_ENV === 'production') {
+//   const __dirname = path.resolve();
+//   app.use(express.static(path.join(__dirname, '/my-crm-app/dist')));
 
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'my-crm-app', 'dist', 'index.html'))
-  );
-} else {
+//   app.get('*', (req, res) =>
+//     res.sendFile(path.resolve(__dirname, 'my-crm-app', 'dist', 'index.html'))
+//   );
+// } else {
   app.get('/', (req, res) => {
     res.send('API is running...');
   });
-}
+// }
 
 // Set the port
 const PORT = process.env.PORT || 5000;
