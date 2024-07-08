@@ -23,7 +23,11 @@ connectDB();
 // };
 // app.use(cors(corsOptions));
 
-app.use(cors());
+app.use(cors({
+  origin: ["https://cake-crm-frontend.vercel.app/"],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
 
 
 
