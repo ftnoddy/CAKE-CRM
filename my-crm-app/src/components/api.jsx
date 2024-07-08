@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5001/api/users/order';
+const API_URL = 'https://cake-crm-backend.vercel.app/api/users/order';
 
 export const createOrder = async (order) => {
   const response = await axios.post(API_URL, order);

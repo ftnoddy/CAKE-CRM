@@ -30,14 +30,14 @@ export default function Customer() {
 
     try {
       if (editIndex !== null) {
-        const updatedCustomer = await axios.put(`http://localhost:5001/api/users/customer/${customers[editIndex]._id}`, customerData);
+        const updatedCustomer = await axios.put(`https://cake-crm-backend.vercel.app/api/users/customer/${customers[editIndex]._id}`, customerData);
         const updatedCustomers = [...customers];
         updatedCustomers[editIndex] = updatedCustomer.data;
         setCustomers(updatedCustomers);
         setEditIndex(null);
         toast.success('Customer updated successfully');
       } else {
-        const newCustomer = await axios.post('http://localhost:5001/api/users/customer', customerData);
+        const newCustomer = await axios.post('https://cake-crm-backend.vercel.app/users/customer', customerData);
         setCustomers([...customers, newCustomer.data]);
         toast.success('Customer added successfully');
       }
@@ -58,7 +58,7 @@ export default function Customer() {
 
   const handleDeleteCustomer = async (index) => {
     try {
-      await axios.delete(`http://localhost:5001/api/users/customer/${customers[index]._id}`);
+      await axios.delete(`https://cake-crm-backend.vercel.app/users/customer/${customers[index]._id}`);
       const updatedCustomers = customers.filter((_, i) => i !== index);
       setCustomers(updatedCustomers);
       toast.success('Customer deleted successfully');
