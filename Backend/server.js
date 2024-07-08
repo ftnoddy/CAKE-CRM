@@ -18,7 +18,7 @@ connectDB();
 
 // Middleware
 const corsOptions = {
-  origin: [''], // Add your frontend URLs here
+  origin: ['https://cake-crm-frontend.vercel.app'], // Add your frontend URLs here
   methods: 'GET,POST',
   credentials: true,
   optionsSuccessStatus: 204
