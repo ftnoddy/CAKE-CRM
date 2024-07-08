@@ -16,13 +16,12 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// Middleware
-// const corsOptions = {
-//   origin: ['https://cake-crm-frontend.vercel.app'], // Add your frontend URLs here
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   credentials: true,
-//   optionsSuccessStatus: 204
-// };
+const corsOptions = {
+  origin: 'https://cake-crm-frontend.vercel.app', // Update this with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 app.use(cors());
 

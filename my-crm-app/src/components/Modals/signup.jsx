@@ -12,7 +12,7 @@ export default function Signup() {
     e.preventDefault();
     setError(null); // Clear any previous errors
     try {
-      const res = await axios.post('http://localhost:5001/api/users', { name, email, password });
+      const res = await axios.post('https://cake-crm-backend.vercel.app/api/users', { name, email, password });
       localStorage.setItem('userInfo', JSON.stringify(res.data));
       setSuccess("Registration successful!"); // Display success message
       console.log(res.data);
