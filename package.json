@@ -8,7 +8,7 @@
     "start": "node Backend/server.js",
     "main": "Backend/server.js",
     "client": "npm run dev --prefix my-crm-app",
-    "server": " Backend/server.js",
+    "server": "nodemon Backend/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "npm install && npm install --prefix my-crm-app && npm run build --prefix my-crm-app",
     "test": "echo \"Error: no test specified\" && exit 1"
