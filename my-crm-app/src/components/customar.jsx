@@ -16,7 +16,7 @@ export default function Customer() {
 
   const fetchCustomers = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/users/customer');
+      const response = await axios.get('https://cake-crm-backend.vercel.app/api/users/customer');
       setCustomers(response.data);
       toast.success('Customers fetched successfully');
     } catch (error) {
