@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, ArcElement, Title, Tooltip, Legend } from 'chart.js';
+import { Line, Pie } from 'react-chartjs-2';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, ArcElement, Title, Tooltip, Legend);
 
 export default function Home() {
   // Dummy data for total customers, orders, new customers, and top cake orders
@@ -17,19 +17,34 @@ export default function Home() {
     { cake: 'Red Velvet Cake', customer: 'Alice Johnson', price: '$30', phone: '456-789-0123' },
   ];
 
-  // Dummy data for bar chart
-  const data = {
+  // Dummy data for line chart
+  const lineChartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
         label: 'Orders',
         data: [12, 19, 3, 5, 2, 3, 9, 12, 15, 8, 6, 4],
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        fill: true,
       },
       {
         label: 'Customers',
         data: [10, 15, 2, 4, 1, 2, 7, 10, 13, 6, 5, 3],
-        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        fill: true,
+      },
+    ],
+  };
+
+  // Dummy data for pie chart
+  const pieChartData = {
+    labels: ['Chocolate Cake', 'Vanilla Cake', 'Red Velvet Cake'],
+    datasets: [
+      {
+        data: [10, 15, 20],
+        backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 205, 86, 0.6)', 'rgba(255, 99, 132, 0.6)'],
       },
     ],
   };
@@ -67,12 +82,21 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold mb-4 text-center text-red-400">Order & Customer Statistics</h2>
-          <Bar data={data} options={{
-            responsive: true,
-            plugins: { legend: { position: 'top' }, title: { display: true, text: 'Orders and Customers Over Time' } }
-          }}/>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-center text-red-400">Order & Customer Statistics</h2>
+            <Line data={lineChartData} options={{
+              responsive: true,
+              plugins: { legend: { position: 'top' }, title: { display: true, text: 'Orders and Customers Over Time' } }
+            }}/>
+          </div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-center text-green-400">Cake Order Distribution</h2>
+            <Pie data={pieChartData} options={{
+              responsive: true,
+              plugins: { legend: { position: 'top' }, title: { display: true, text: 'Cake Order Distribution' } }
+            }}/>
+          </div>
         </div>
       </main>
       <footer className="bg-gray-800 p-4 text-center">
