@@ -56,20 +56,14 @@ export default function Orders() {
   };
 
   return (
-    <section className="bg-gray-900 text-gray-200 p-8 rounded-lg shadow-lg">
+    <section className="mb-8 bg-gray-900 text-gray-200 p-8 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4">Customer Orders</h2>
-      <div className="fixed w-full top-0 left-0 bg-gray-900 p-4 z-10">
+      <OrderList orders={orders} handleEditOrder={handleEditOrder} handleDeleteOrder={handleDeleteOrder} />
+      <div className="mt-8">
         <OrderForm
           addOrder={handleAddOrder}
           orderToEdit={orderToEdit}
           setOrderToEdit={setOrderToEdit}
-        />
-      </div>
-      <div className="mt-24"> {/* Add top margin to provide space for the fixed form */}
-        <OrderList
-          orders={orders}
-          handleEditOrder={handleEditOrder}
-          handleDeleteOrder={handleDeleteOrder}
         />
       </div>
     </section>
